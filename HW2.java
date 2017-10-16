@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+﻿import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class HW2 {
         
 		int nDeck=Integer.parseInt(testn);
 		Deck deck=new Deck(nDeck);
-		//TODO: please check your output, make sure that you print all cards on your screen (10 points)
+		
 		deck.printDeck();
 		
 		if(isAllCardsCorrect(deck.getAllCards(),nDeck)){
@@ -26,8 +26,8 @@ public class HW2 {
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW2
-	 * @param allCards 所有的牌
-	 * @param nDeck 總共有幾副牌
+	 * @param allCards �������
+	 * @param nDeck 蝮賢��嗾����
 	 * @return
 	 */
 	private static boolean isAllCardsCorrect(ArrayList<Card> allCards,int nDeck){
@@ -64,37 +64,51 @@ public class HW2 {
 
 }
 /**
- * Description: TODO: please add description here
+ * Description:deck:
+ * 			   the first  layer for loop: get nDeck to know how many decks of card we need to make
+ * 			   the second layer for loop: make poker rank ace to king(1~13)
+ *   		   the third  layer for loop: make the four different kinds of card's unit
+ *             it means that we can get [nDeck*13(ace to king)*4(unit)] cards
+ *             
+ *              printDeck: print all the cards
+ *              getAllCards: get all cards and it can  put in an array list
  */
 class Deck{
 	private ArrayList<Card> cards;
-	//TODO: Please implement the constructor (30 points)
+	
 	public Deck(int nDeck){
 		cards=new ArrayList<Card>();
-		//1 Deck have 52 cards, https://en.wikipedia.org/wiki/Poker
-		//Hint: Use new Card(x,y) and 3 for loops to add card into deck
-		//Sample code start
-		//Card card=new Card(1,1); ->means new card as clubs ace
-		//cards.add(card);
-		//Sample code end
-
+	for(int n=1;n<=nDeck;n++ )
+	{for(int i=1;i<=13;i++)
+		{for (int j=1;j<=4;j++)
+		 {Card card=new Card(j,i);
+		  cards.add(card);
+		  
+		 }
+		}
+	}
+			
+		
 	}	
-	//TODO: Please implement the method to print all cards on screen (10 points)
+	
 	public void printDeck(){
-		//Hint: print all items in ArrayList<Card> cards, 
-		//TODO: please implement and reuse printCard method in Card class (5 points)
-
+		
+		for(Card a: cards)
+			System.out.println(a);
 	}
 	public ArrayList<Card> getAllCards(){
 		return cards;
 	}
 }
 /**
- * Description: TODO: please add description here
+ * Description: card constructor : suit and rank
+ *              printCard : print suit and rank in the same time  
+ *              getSuit:get suit
+ *            	getRank:get rank
  */
 class Card{
-	private int suit; //Definition: 1~4, Clubs=1, Diamonds=2, Hearts=3, Spades=4
-	private int rank; //1~13
+	private int suit; 
+	private int rank;
 	/**
 	 * @param s suit
 	 * @param r rank
@@ -103,10 +117,10 @@ class Card{
 		suit=s;
 		rank=r;
 	}	
-	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
+	
 	public void printCard(){
-		//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
-
+		
+		System.out.println(suit+","+rank);
 	}
 	public int getSuit(){
 		return suit;
